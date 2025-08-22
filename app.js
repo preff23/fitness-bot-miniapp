@@ -89,7 +89,7 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
       const button = document.createElement('button');
       button.className = 'submenu-item';
       button.innerHTML = `
-        <div class="icon">⚡</div>
+        <span class="icon energy" aria-hidden="true"></span>
         <span>${item.text}</span>
       `;
       
