@@ -8,12 +8,18 @@
     "dev": "nodemon bot.js"
   },
   "dependencies": {
+    "dotenv": "^17.2.1",
     "telegraf": "^4.15.6"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
   },
-  "keywords": ["telegram", "bot", "fitness", "miniapp"],
+  "keywords": [
+    "telegram",
+    "bot",
+    "fitness",
+    "miniapp"
+  ],
   "author": "",
   "license": "MIT"
 }
