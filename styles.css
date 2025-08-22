@@ -48,7 +48,7 @@ body {
   mask-repeat: no-repeat;
   mask-position: center;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 4px rgba(255, 110, 0, 0.25));
+  filter: drop-shadow(0 0 6px rgba(255, 110, 0, 0.45));
 }
 
 .icon.cons {
@@ -103,8 +103,8 @@ body {
 .icon.yoga {
   -webkit-mask-image: url("./photo/yoga.png");
   mask-image: url("./photo/yoga.png");
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
 }
 
 /* Parallax Background */
