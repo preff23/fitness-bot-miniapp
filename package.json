@@ -1,0 +1,19 @@
+{
+  "name": "fitness-bot",
+  "version": "1.0.0",
+  "description": "Telegram Fitness Bot with Mini App",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js"
+  },
+  "dependencies": {
+    "telegraf": "^4.15.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": ["telegram", "bot", "fitness", "miniapp"],
+  "author": "",
+  "license": "MIT"
+}
