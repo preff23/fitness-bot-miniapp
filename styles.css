@@ -84,6 +84,11 @@ body {
   mask-image: url("./photo/question.png");
 }
 
+.icon.yoga {
+  -webkit-mask-image: url("./photo/yoga.png");
+  mask-image: url("./photo/yoga.png");
+}
+
 /* Parallax Background */
 .parallax-bg {
   position: fixed;
