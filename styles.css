@@ -38,8 +38,8 @@ body {
 /* Icon Component */
 .icon {
   display: inline-block;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   background-color: var(--accent-orange);
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -47,6 +47,7 @@ body {
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
+  flex-shrink: 0;
 }
 
 .icon.cons {
@@ -306,13 +307,14 @@ body {
 .card-icon {
   margin-bottom: 12px;
   transition: transform 0.3s ease;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   color: var(--text);
-  font-size: 32px;
+  font-size: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .menu-card:hover .card-icon,
@@ -458,12 +460,13 @@ body {
 }
 
 .submenu-item .icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 28px;
+  flex-shrink: 0;
 }
 
 /* Skeleton Loading */
