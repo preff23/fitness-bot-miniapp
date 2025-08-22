@@ -3,80 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#1A1A1A" />
-  <title>Фитнес-Тренер · Mini App</title>
+  <meta name="theme-color" content="#0F1115" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Fitness Bot · Mini App</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <div id="app">
-    <header class="app-header">
-      <h1 class="app-title">Фитнес · Тренер</h1>
+    <!-- Parallax Background -->
+    <div class="parallax-bg">
+      <div class="gradient-blob blob-1"></div>
+      <div class="gradient-blob blob-2"></div>
+      <div class="gradient-blob blob-3"></div>
+    </div>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="brand">
+        <div class="logo">FB</div>
+        <h1 class="brand-name">Fitness Bot</h1>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" aria-label="Информация">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </button>
+        <button class="icon-btn" aria-label="Поддержка">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </button>
+      </div>
     </header>
 
-    <main class="app-main">
+    <!-- Main Content -->
+    <main class="main-content">
       <section class="menu-grid" aria-label="Главное меню">
-        <!-- 1. Бесплатная тренировка + консультация -->
-        <button class="menu-card accent-blue" data-action="free_consult">
-          <span class="icon" aria-hidden="true">💬</span>
-          <span class="label">Бесплатная тренировка<br/>+ консультация</span>
+        <!-- 1. Бесплатная консультация -->
+        <button class="menu-card primary" data-action="free_consult">
+          <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <path d="M13 8H7"/>
+            <path d="M17 12H7"/>
+          </svg>
+          <span class="card-label">Бесплатная консультация</span>
         </button>
 
         <!-- 2. Тренировка в зале -->
-        <button class="menu-card accent-orange" data-action="gym_training">
-          <span class="icon" aria-hidden="true">🏋️‍♂️</span>
-          <span class="label">Тренировка в зале</span>
+        <button class="menu-card primary" data-action="gym_training" data-submenu="gym">
+          <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 4v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2z"/>
+            <path d="M6 8h12"/>
+            <path d="M6 12h12"/>
+            <path d="M6 16h12"/>
+          </svg>
+          <span class="card-label">Тренировка в зале</span>
         </button>
 
         <!-- 3. Тренировка улица -->
-        <button class="menu-card accent-orange" data-action="outdoor_training">
-          <span class="icon" aria-hidden="true">🏃</span>
-          <span class="label">Тренировка улица</span>
+        <button class="menu-card primary" data-action="outdoor_training" data-submenu="outdoor">
+          <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 4v16l-3-3-3 3V4"/>
+            <path d="M9 12h6"/>
+            <path d="M9 16h6"/>
+          </svg>
+          <span class="card-label">Тренировка улица</span>
         </button>
 
         <!-- 4. Запись на марафон -->
-        <button class="menu-card accent-orange" data-action="marathon_signup">
-          <span class="icon" aria-hidden="true">🎯</span>
-          <span class="label">Запись на марафон</span>
+        <button class="menu-card primary" data-action="marathon_signup">
+          <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+            <path d="M10 6h4a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-4"/>
+            <path d="M6 15h1.5a2.5 2.5 0 0 1 0 5H6"/>
+            <path d="M6 12h8"/>
+          </svg>
+          <span class="card-label">Запись на марафон</span>
         </button>
 
         <!-- 5. Тренировки дома -->
-        <button class="menu-card accent-blue" data-action="home_workouts">
-          <span class="icon" aria-hidden="true">🏠</span>
-          <span class="label">Тренировки дома</span>
+        <button class="menu-card accent" data-action="home_workouts" data-submenu="home">
+          <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+          <span class="card-label">Тренировки дома</span>
         </button>
 
-        <!-- 6. Смешанные тренировки (мега комбо) -->
-        <button class="menu-card accent-mixed" data-action="combo_training">
-          <span class="icon" aria-hidden="true">🔄</span>
-          <span class="label">Смешанные тренировки<br/>мега комбо</span>
+        <!-- 6. Смешанные тренировки -->
+        <button class="menu-card accent" data-action="combo_training" data-submenu="combo">
+          <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0l8.57-3.9a1 1 0 0 0 0-1.83Z"/>
+            <path d="m22 12-8.57 3.9a2 2 0 0 1-1.66 0L3 12"/>
+            <path d="m22 12-8.57 3.9a2 2 0 0 1-1.66 0L3 12"/>
+          </svg>
+          <span class="card-label">Смешанные тренировки</span>
         </button>
 
         <!-- 7. Индивидуальный план питания -->
-        <button class="menu-card accent-green" data-action="nutrition_plan">
-          <span class="icon" aria-hidden="true">🥗</span>
-          <span class="label">Индивидуальный план питания</span>
+        <button class="menu-card success" data-action="nutrition_plan">
+          <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          <span class="card-label">Индивидуальный план питания</span>
         </button>
 
         <!-- 8. Задать свой вопрос -->
-        <button class="menu-card accent-blue" data-action="ask_question">
-          <span class="icon" aria-hidden="true">❓</span>
-          <span class="label">Задать свой вопрос</span>
+        <button class="menu-card accent" data-action="ask_question">
+          <svg class="card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <path d="M12 17h.01"/>
+          </svg>
+          <span class="card-label">Задать свой вопрос</span>
         </button>
       </section>
     </main>
 
-    <nav class="bottom-bar" aria-label="Быстрые действия">
-      <button class="bottom-btn" data-bottom="catalog">Каталог</button>
-      <button class="bottom-btn" data-bottom="question">Задать вопрос</button>
-      <button class="bottom-btn" data-bottom="invite">Пригласить</button>
-    </nav>
+    <!-- Bottom Sheet Overlay -->
+    <div class="bottom-sheet-overlay" id="bottomSheetOverlay"></div>
+
+    <!-- Bottom Sheet -->
+    <div class="bottom-sheet" id="bottomSheet">
+      <div class="bottom-sheet-header">
+        <div class="drag-handle"></div>
+        <h2 class="bottom-sheet-title" id="bottomSheetTitle">Выберите программу</h2>
+        <p class="bottom-sheet-description" id="bottomSheetDescription">Описание программы</p>
+      </div>
+      <div class="bottom-sheet-content" id="bottomSheetContent">
+        <!-- Content will be populated by JavaScript -->
+      </div>
+    </div>
   </div>
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src="./main.js"></script>
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
 
