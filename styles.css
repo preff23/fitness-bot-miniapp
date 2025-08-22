@@ -278,12 +278,13 @@ body {
 
 /* Special styles for long text buttons */
 .menu-card[data-action="nutrition_plan"] .card-label {
-  font-size: 12px;
-  letter-spacing: 0.3px;
+  font-size: 11px;
+  letter-spacing: 0.2px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
   max-width: 100%;
+  line-height: 1.1;
 }
 
 /* Bottom Sheet */
@@ -420,7 +421,8 @@ body {
 @media (min-width: 480px) {
   .menu-card { min-height: 140px; }
   .menu-card[data-action="nutrition_plan"] .card-label {
-    font-size: 13px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
   }
 }
 @media (min-width: 768px) {
@@ -428,7 +430,8 @@ body {
   .menu-card { min-height: 160px; }
   .menu-grid { grid-template-columns: repeat(3, 1fr); }
   .menu-card[data-action="nutrition_plan"] .card-label {
-    font-size: 14px;
+    font-size: 13px;
+    letter-spacing: 0.4px;
   }
 }
 
