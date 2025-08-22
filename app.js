@@ -1,4 +1,4 @@
-/* Telegram Mini App - Fitness Bot */
+/* Telegram Mini App - Fitness Bot - DARING SPORTS STYLE */
 import { ADMIN_USERNAME, BRAND, dm } from './config.js';
 
 (function () {
@@ -14,38 +14,38 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
   // Submenu data
   const submenuData = {
     gym: {
-      title: 'Тренировка в зале',
+      title: 'ТРЕНИРОВКА В ЗАЛЕ',
       description: 'Выберите программу для тренировок в спортзале',
       items: [
-        { text: '8 тренировок', message: 'Зал: 8 тренировок' },
-        { text: '12 тренировок', message: 'Зал: 12 тренировок' },
-        { text: 'Комбо (12 + ПП + сопровождение)', message: 'Зал: Комбо' },
-        { text: 'Индивидуальный план питания', message: 'Зал: Индивидуальный план питания' }
+        { text: '8 ТРЕНИРОВОК', message: 'Зал: 8 тренировок' },
+        { text: '12 ТРЕНИРОВОК', message: 'Зал: 12 тренировок' },
+        { text: 'КОМБО (12 + ПП + СОПРОВОЖДЕНИЕ)', message: 'Зал: Комбо' },
+        { text: 'ИНДИВИДУАЛЬНЫЙ ПЛАН ПИТАНИЯ', message: 'Зал: Индивидуальный план питания' }
       ]
     },
     outdoor: {
-      title: 'Тренировка улица',
+      title: 'ТРЕНИРОВКА УЛИЦА',
       description: 'Выберите программу для тренировок на улице',
       items: [
-        { text: '8 тренировок', message: 'Улица: 8 тренировок' },
-        { text: '12 тренировок', message: 'Улица: 12 тренировок' },
-        { text: 'Комбо (12 + ПП + сопровождение)', message: 'Улица: Комбо' },
-        { text: 'Индивидуальный план питания', message: 'Улица: Индивидуальный план питания' }
+        { text: '8 ТРЕНИРОВОК', message: 'Улица: 8 тренировок' },
+        { text: '12 ТРЕНИРОВОК', message: 'Улица: 12 тренировок' },
+        { text: 'КОМБО (12 + ПП + СОПРОВОЖДЕНИЕ)', message: 'Улица: Комбо' },
+        { text: 'ИНДИВИДУАЛЬНЫЙ ПЛАН ПИТАНИЯ', message: 'Улица: Индивидуальный план питания' }
       ]
     },
     home: {
-      title: 'Тренировки дома',
+      title: 'ТРЕНИРОВКИ ДОМА',
       description: 'Выберите программу для домашних тренировок',
       items: [
-        { text: '8 тренировок', message: 'Дом: 8 тренировок' },
-        { text: 'Комбо (12 + ПП + сопровождение)', message: 'Дом: Комбо' }
+        { text: '8 ТРЕНИРОВОК', message: 'Дом: 8 тренировок' },
+        { text: 'КОМБО (12 + ПП + СОПРОВОЖДЕНИЕ)', message: 'Дом: Комбо' }
       ]
     },
     combo: {
-      title: 'Смешанные тренировки',
+      title: 'СМЕШАННЫЕ ТРЕНИРОВКИ',
       description: 'Максимальная программа с разными видами активности',
       items: [
-        { text: 'Мега-комбо (16 трен. зал+улица+дом, ПП, сопровождение)', message: 'Смешанные: Мега-комбо 16 + ПП + сопровождение' }
+        { text: 'МЕГА КОМБО (16 ТРЕНИРОВОК, ЗАЛ+УЛИЦА+ДОМ+ПП+СОПРОВОЖДЕНИЕ)', message: 'Смешанные: Мега комбо 16 тренировок, зал+улица+дом+ПП+сопровождение' }
       ]
     }
   };
@@ -54,8 +54,8 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
     if (!tg) return;
     tg.ready();
     tg.expand();
-    tg.setHeaderColor("#0F1115");
-    tg.setBackgroundColor("#0F1115");
+    tg.setHeaderColor("#0D0D0D");
+    tg.setBackgroundColor("#0D0D0D");
     
     // Handle back button
     tg.onEvent("backButtonClicked", closeBottomSheet);
@@ -89,11 +89,7 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
       const button = document.createElement('button');
       button.className = 'submenu-item';
       button.innerHTML = `
-        <div class="icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M9 18l6-6-6-6"/>
-          </svg>
-        </div>
+        <div class="icon">⚡</div>
         <span>${item.text}</span>
       `;
       
