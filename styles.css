@@ -48,6 +48,7 @@ body {
   mask-repeat: no-repeat;
   mask-position: center;
   flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(255, 110, 0, 0.25));
 }
 
 .icon.cons {
@@ -60,15 +61,15 @@ body {
 .icon.gym {
   -webkit-mask-image: url("./photo/gym.png");
   mask-image: url("./photo/gym.png");
-  width: 31px;
-  height: 31px;
+  width: 29px;
+  height: 29px;
 }
 
 .icon.runner {
   -webkit-mask-image: url("./photo/runner.png");
   mask-image: url("./photo/runner.png");
-  width: 33px;
-  height: 33px;
+  width: 31px;
+  height: 31px;
 }
 
 .icon.plan {
@@ -95,8 +96,8 @@ body {
 .icon.question {
   -webkit-mask-image: url("./photo/question.png");
   mask-image: url("./photo/question.png");
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
 }
 
 .icon.yoga {
