@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Telegraf } = require('telegraf');
 
-const WEBAPP_URL = process.env.WEBAPP_URL || "https://fitness-bot-miniapp.vercel.app/"; // мини-приложение
+const WEBAPP_URL = process.env.WEBAPP_URL || "https://fitness-bot-miniapp-ged8.vercel.app/"; // мини-приложение
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 

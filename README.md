@@ -20,7 +20,7 @@ npm install
 Создайте файл `.env`:
 ```
 BOT_TOKEN=your_bot_token_here
-WEBAPP_URL=https://fitness-bot-miniapp.vercel.app/
+WEBAPP_URL=https://fitness-bot-miniapp-ged8.vercel.app/
 ```
 
 ### 3. Получение токена бота
