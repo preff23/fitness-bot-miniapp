@@ -130,19 +130,19 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
     switch (action) {
       case "free_consult":
         hapticImpact('medium');
-        dm('Бесплатная консультация');
+        dm('Здравствуйте! Хочу бесплатную вводную тренировку + консультацию.');
         break;
       case "marathon_signup":
         hapticImpact('medium');
-        dm('Запись на марафон');
+        dm('Здравствуйте! Хочу записаться на марафон.');
         break;
       case "nutrition_plan":
         hapticImpact('medium');
-        dm('Индивидуальный план питания');
+        dm('Здравствуйте! Нужен индивидуальный план питания.');
         break;
       case "ask_question":
         hapticImpact('medium');
-        dm('Вопрос');
+        dm('Здравствуйте! У меня вопрос: …');
         break;
     }
   }
