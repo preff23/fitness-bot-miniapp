@@ -53,55 +53,57 @@ body {
 .icon.cons {
   -webkit-mask-image: url("./photo/cons.png");
   mask-image: url("./photo/cons.png");
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
 }
 
 .icon.gym {
   -webkit-mask-image: url("./photo/gym.png");
   mask-image: url("./photo/gym.png");
-  width: 34px;
-  height: 34px;
+  width: 31px;
+  height: 31px;
 }
 
 .icon.runner {
   -webkit-mask-image: url("./photo/runner.png");
   mask-image: url("./photo/runner.png");
-  width: 41px;
-  height: 41px;
+  width: 33px;
+  height: 33px;
 }
 
 .icon.plan {
   -webkit-mask-image: url("./photo/plan.png");
   mask-image: url("./photo/plan.png");
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
 }
 
 .icon.energy {
   -webkit-mask-image: url("./photo/energy.png");
   mask-image: url("./photo/energy.png");
-  /* оставляем как есть - 36px */
+  width: 32px;
+  height: 32px;
 }
 
 .icon.diet {
   -webkit-mask-image: url("./photo/diet.png");
   mask-image: url("./photo/diet.png");
-  width: 39px;
-  height: 39px;
+  width: 32px;
+  height: 32px;
 }
 
 .icon.question {
   -webkit-mask-image: url("./photo/question.png");
   mask-image: url("./photo/question.png");
-  width: 33px;
-  height: 33px;
+  width: 30px;
+  height: 30px;
 }
 
 .icon.yoga {
   -webkit-mask-image: url("./photo/yoga.png");
   mask-image: url("./photo/yoga.png");
-  /* оставляем как есть - 36px */
+  width: 32px;
+  height: 32px;
 }
 
 /* Parallax Background */
