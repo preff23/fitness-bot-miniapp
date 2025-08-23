@@ -28,8 +28,14 @@ bot.command("menu", async (ctx) => {
   await ctx.reply("Открой фитнес-меню:", ikb);
 });
 
-bot.launch();
+// Для локальной разработки (polling)
+if (process.env.NODE_ENV === 'development') {
+  bot.launch();
+  
+  // Enable graceful stop
+  process.once('SIGINT', () => bot.stop('SIGINT'));
+  process.once('SIGTERM', () => bot.stop('SIGTERM'));
+}
 
-// Enable graceful stop
-process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM'));
+// Экспортируем для серверлесс функций
+module.exports = bot;

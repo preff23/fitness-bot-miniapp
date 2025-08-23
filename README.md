@@ -37,12 +37,31 @@ npm start
 - `/start` - приветственное сообщение с кнопкой "Фитнес меню"
 - `/menu` - открытие фитнес-меню через inline кнопку
 
-## Деплой
-1. Задеплойте фронтенд на Vercel
-2. Обновите `WEBAPP_URL` в `.env`
-3. Запустите бота на сервере
+## Деплой на Vercel (Serverless)
+
+### 1. Переменные окружения в Vercel
+В Project Settings → Environment Variables добавьте:
+- `BOT_TOKEN` = 7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA
+- `WEBAPP_URL` = https://fitness-bot-miniapp-ged8.vercel.app/
+- `TG_WEBHOOK_SECRET` = любой рандомный секрет (например, UUID)
+
+### 2. Настройка вебхука
+После деплоя выполните в браузере:
+```
+https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/setWebhook?url=https://fitness-bot-miniapp-ged8.vercel.app/api/telegram&secret_token=YOUR_SECRET
+```
+
+### 3. Проверка вебхука
+```
+https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/getWebhookInfo
+```
+
+## Локальная разработка
+```bash
+NODE_ENV=development npm start
+```
 
 ## Примечания
-- Установите переменную окружения `WEBAPP_URL` на URL вашего мини-приложения
+- Бот работает через вебхук на Vercel (serverless)
+- Для локальной разработки используется polling
 - Telegram не позволяет авто-открыть WebApp без действия пользователя
-- Текст "Фитнес меню" можно оставить в нижней панели

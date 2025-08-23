@@ -1,4 +1,10 @@
 {
+  "functions": {
+    "api/telegram.ts": {
+      "runtime": "nodejs18.x",
+      "maxDuration": 10
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
