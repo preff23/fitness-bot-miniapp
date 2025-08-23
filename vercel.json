@@ -11,6 +11,10 @@
     "api/posts.js": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
+    },
+    "api/test-firebase.js": {
+      "runtime": "@vercel/node@3.0.0",
+      "maxDuration": 10
     }
   },
   "headers": [
