@@ -133,8 +133,8 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
         </div>
       `;
       
-      // Загружаем новости
-      const response = await fetch('/api/posts?limit=20');
+      // Загружаем новости с кэш-бастером
+      const response = await fetch('/api/posts?limit=20&t=' + Date.now());
       const data = await response.json();
       
       if (data.ok && data.items.length > 0) {
@@ -142,11 +142,14 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
         mainContent.innerHTML = `
           <div class="news-container">
             <div class="news-header">
-              <button class="back-button" onclick="location.reload()">
-                <span class="icon energy" aria-hidden="true"></span>
-                НАЗАД
-              </button>
-              <h2>НОВОСТИ</h2>
+              <div class="left">
+                <button class="back-button" onclick="location.reload()">
+                  <span class="icon energy" aria-hidden="true"></span>
+                  НАЗАД
+                </button>
+                <h2>НОВОСТИ</h2>
+              </div>
+              <button class="refresh-button" onclick="showNews()">🔄</button>
             </div>
             <div class="news-list">
               ${data.items.map(post => `
@@ -166,11 +169,14 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
         mainContent.innerHTML = `
           <div class="news-container">
             <div class="news-header">
-              <button class="back-button" onclick="location.reload()">
-                <span class="icon energy" aria-hidden="true"></span>
-                НАЗАД
-              </button>
-              <h2>НОВОСТИ</h2>
+              <div class="left">
+                <button class="back-button" onclick="location.reload()">
+                  <span class="icon energy" aria-hidden="true"></span>
+                  НАЗАД
+                </button>
+                <h2>НОВОСТИ</h2>
+              </div>
+              <button class="refresh-button" onclick="showNews()">🔄</button>
             </div>
             <div class="news-empty">
               <p>Пока нет новостей</p>
@@ -184,11 +190,14 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
       mainContent.innerHTML = `
         <div class="news-container">
           <div class="news-header">
-            <button class="back-button" onclick="location.reload()">
-              <span class="icon energy" aria-hidden="true"></span>
-              НАЗАД
-            </button>
-            <h2>НОВОСТИ</h2>
+            <div class="left">
+              <button class="back-button" onclick="location.reload()">
+                <span class="icon energy" aria-hidden="true"></span>
+                НАЗАД
+              </button>
+              <h2>НОВОСТИ</h2>
+            </div>
+            <button class="refresh-button" onclick="showNews()">🔄</button>
           </div>
           <div class="news-error">
             <p>Ошибка загрузки новостей</p>

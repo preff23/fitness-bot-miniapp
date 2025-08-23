@@ -13,7 +13,11 @@ module.exports = async function handler(req, res) {
     // Сортируем по дате на клиенте
     list.sort((a, b) => b.date - a.date);
     
-    res.status(200).json({ ok: true, items: list });
+    res.status(200)
+      .setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+      .setHeader('Pragma', 'no-cache')
+      .setHeader('Expires', '0')
+      .json({ ok: true, items: list });
   } catch (e) {
     console.error('❌ Ошибка получения постов:', e);
     res.status(200).json({ ok: false, error: e.message || "unknown" });
