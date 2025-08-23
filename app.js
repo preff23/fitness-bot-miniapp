@@ -122,6 +122,82 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
     }
   }
 
+  async function showNews() {
+    try {
+      // Показываем загрузку
+      const mainContent = document.querySelector('.main-content');
+      mainContent.innerHTML = `
+        <div class="news-loading">
+          <div class="loading-spinner"></div>
+          <p>ЗАГРУЖАЕМ НОВОСТИ...</p>
+        </div>
+      `;
+      
+      // Загружаем новости
+      const response = await fetch('/api/posts?limit=20');
+      const data = await response.json();
+      
+      if (data.ok && data.items.length > 0) {
+        // Показываем новости
+        mainContent.innerHTML = `
+          <div class="news-container">
+            <div class="news-header">
+              <button class="back-button" onclick="location.reload()">
+                <span class="icon energy" aria-hidden="true"></span>
+                НАЗАД
+              </button>
+              <h2>НОВОСТИ</h2>
+            </div>
+            <div class="news-list">
+              ${data.items.map(post => `
+                <article class="news-card">
+                  <div class="news-date">${new Date(post.date * 1000).toLocaleString('ru-RU')}</div>
+                  ${post.text ? `<div class="news-text">${post.text}</div>` : ''}
+                  <a class="news-open" href="https://t.me/afterlyf3/${post.id}" target="_blank">
+                    ОТКРЫТЬ В КАНАЛЕ →
+                  </a>
+                </article>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } else {
+        // Показываем ошибку или пустое состояние
+        mainContent.innerHTML = `
+          <div class="news-container">
+            <div class="news-header">
+              <button class="back-button" onclick="location.reload()">
+                <span class="icon energy" aria-hidden="true"></span>
+                НАЗАД
+              </button>
+              <h2>НОВОСТИ</h2>
+            </div>
+            <div class="news-empty">
+              <p>Пока нет новостей</p>
+            </div>
+          </div>
+        `;
+      }
+    } catch (error) {
+      console.error('Ошибка загрузки новостей:', error);
+      const mainContent = document.querySelector('.main-content');
+      mainContent.innerHTML = `
+        <div class="news-container">
+          <div class="news-header">
+            <button class="back-button" onclick="location.reload()">
+              <span class="icon energy" aria-hidden="true"></span>
+              НАЗАД
+            </button>
+            <h2>НОВОСТИ</h2>
+          </div>
+          <div class="news-error">
+            <p>Ошибка загрузки новостей</p>
+          </div>
+        </div>
+      `;
+    }
+  }
+
   function routeAction(action) {
     switch (action) {
       case "free_consult":
@@ -139,6 +215,10 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
       case "ask_question":
         hapticImpact('medium');
         dm('Здравствуйте! У меня вопрос: …');
+        break;
+      case "news":
+        hapticImpact('medium');
+        showNews();
         break;
     }
   }

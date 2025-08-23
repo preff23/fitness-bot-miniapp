@@ -1,8 +1,10 @@
+const { db } = require('../lib/firebase');
+
 module.exports = async (req, res) => {
   console.log('📨 Получен запрос от Telegram');
   
   try {
-    const { message } = req.body;
+    const { message, channel_post } = req.body;
     
     if (message && message.text) {
       console.log('💬 Сообщение:', message.text);
@@ -57,6 +59,30 @@ module.exports = async (req, res) => {
         });
         
         console.log('✅ Ответ отправлен на /menu');
+      }
+    }
+    
+    // === Обработчик постов канала ===
+    if (channel_post) {
+      const post = channel_post;
+      const channelUsername = process.env.CHANNEL_USERNAME;
+      
+      // Сохраняем только из нашего канала
+      if (post.chat && post.chat.username && 
+          `@${post.chat.username}`.toLowerCase() === channelUsername.toLowerCase()) {
+        
+        const id = String(post.message_id);
+        const payload = {
+          id,
+          date: post.date,
+          text: post.text || post.caption || "",
+          entities: post.entities || post.caption_entities || [],
+          photos: (post.photo || []).map((p) => p.file_id),
+          has_media: !!post.photo,
+        };
+        
+        await db.ref(`/posts/${id}`).set(payload);
+        console.log('📝 Пост сохранен в Firebase:', id);
       }
     }
     
