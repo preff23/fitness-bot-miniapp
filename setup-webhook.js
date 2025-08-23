@@ -1,7 +1,7 @@
 const https = require('https');
 
 const BOT_TOKEN = '7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA';
-const WEBHOOK_URL = 'https://fitness-bot-miniapp-ged8.vercel.app/api/telegram';
+const WEBHOOK_URL = 'https://fitness-bot-miniapp-ged8.vercel.app/api/telegram-simple';
 const SECRET_TOKEN = 'fitness-bot-secret-2024';
 
 console.log('🔧 Настройка вебхука для бота...');

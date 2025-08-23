@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/telegram.js": {
+    "api/telegram-simple.js": {
       "runtime": "nodejs18.x",
       "maxDuration": 10
     },
