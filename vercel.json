@@ -23,6 +23,10 @@
     "api/simple-firebase-test.js": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
+    },
+    "api/debug-key.js": {
+      "runtime": "@vercel/node@3.0.0",
+      "maxDuration": 10
     }
   },
   "headers": [
