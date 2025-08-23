@@ -1,4 +1,4 @@
-const { db } = require('../lib/firebase');
+// const { db } = require('../lib/firebase'); // Временно отключено
 
 module.exports = async (req, res) => {
   console.log('📨 Получен запрос от Telegram');
@@ -63,6 +63,8 @@ module.exports = async (req, res) => {
     }
     
     // === Обработчик постов канала ===
+    // Временно отключено - требует настройки Firebase
+    /*
     if (channel_post) {
       const post = channel_post;
       const channelUsername = process.env.CHANNEL_USERNAME;
@@ -85,6 +87,7 @@ module.exports = async (req, res) => {
         console.log('📝 Пост сохранен в Firebase:', id);
       }
     }
+    */
     
   } catch (error) {
     console.error('❌ Ошибка:', error);
