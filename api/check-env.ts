@@ -11,7 +11,7 @@ export default function handler(_req: VercelRequest, res: VercelResponse) {
     FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID ? "✅ Установлен" : "❌ Отсутствует",
     FIREBASE_CLIENT_EMAIL: process.env.FIREBASE_CLIENT_EMAIL ? "✅ Установлен" : "❌ Отсутствует",
     FIREBASE_PRIVATE_KEY: process.env.FIREBASE_PRIVATE_KEY ? "✅ Установлен" : "❌ Отсутствует",
-    FIREBASE_DB_URL: process.env.FIREBASE_DB_URL || "❌ Отсутствует"
+    FIREBASE_DATABASE_URL: process.env.FIREBASE_DATABASE_URL || "❌ Отсутствует"
   };
   
   res.status(200).json({
