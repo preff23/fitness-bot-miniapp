@@ -19,6 +19,10 @@
     "api/test-firebase.ts": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
+    },
+    "api/simple-test.ts": {
+      "runtime": "@vercel/node@3.0.0",
+      "maxDuration": 5
     }
   },
   "headers": [
