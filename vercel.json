@@ -16,17 +16,17 @@
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
     },
-    "api/test-firebase.ts": {
-      "runtime": "@vercel/node@3.0.0",
-      "maxDuration": 10
-    },
     "api/simple-test.ts": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 5
     },
-    "api/minimal-firebase.ts": {
+    "api/posts-simple.ts": {
       "runtime": "@vercel/node@3.0.0",
-      "maxDuration": 15
+      "maxDuration": 10
+    },
+    "api/latest-post.ts": {
+      "runtime": "@vercel/node@3.0.0",
+      "maxDuration": 10
     }
   },
   "headers": [
