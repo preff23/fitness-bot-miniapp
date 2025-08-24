@@ -1,27 +1,27 @@
 {
   "functions": {
     "api/telegram.ts": {
-      "runtime": "@vercel/node@3.0.0",
+      "runtime": "nodejs18.x",
       "maxDuration": 10
     },
     "api/posts.ts": {
-      "runtime": "@vercel/node@3.0.0",
+      "runtime": "nodejs18.x",
       "maxDuration": 10
     },
     "api/version.ts": {
-      "runtime": "@vercel/node@3.0.0",
+      "runtime": "nodejs18.x",
       "maxDuration": 10
     },
     "api/check-env.ts": {
-      "runtime": "@vercel/node@3.0.0",
+      "runtime": "nodejs18.x",
       "maxDuration": 10
     },
     "api/test-firebase.ts": {
-      "runtime": "@vercel/node@3.0.0",
+      "runtime": "nodejs18.x",
       "maxDuration": 10
     },
     "api/simple-test.ts": {
-      "runtime": "@vercel/node@3.0.0",
+      "runtime": "nodejs18.x",
       "maxDuration": 5
     }
   },

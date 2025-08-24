@@ -80,35 +80,44 @@ https://api.telegram.org/bot<BOT_TOKEN>/getWebhookInfo
 2. **Через API**: `https://api.telegram.org/bot<BOT_TOKEN>/getChat?chat_id=@<channel_username>`
 3. **Через логи**: Временно логировать `m.chat.id` в `savePost` и сделать тест-пост
 
-### 5. Тестирование webhook
-**Правильный cURL-тест:**
+### 5. Тестирование системы
+
+#### 5.1. Проверка Firebase подключения
 ```bash
-curl -X POST "https://<ТВОЙ-ДОМЕН>/api/telegram" \
+curl -s https://<твой-домен>/api/test-firebase | jq .
+```
+Должно вернуться: `{ ok: true, wrote: <ts>, read: { ts: <тот же ts> }, dbURL: "..." }`
+
+#### 5.2. Проверка ENV переменных
+```bash
+curl -s https://<твой-домен>/api/check-env | jq .
+```
+
+#### 5.3. Тестирование webhook
+**Правильный cURL-тест (без обёртки "update"):**
+```bash
+curl -X POST "https://<твой-домен>/api/telegram" \
   -H "Content-Type: application/json" \
   -d '{
     "update_id": 999999,
     "channel_post": {
-      "message_id": 100,
-      "date": 1755960000,
-      "chat": { "id": -1001234567890, "title": "Test", "username": "fitnesstest", "type": "channel" },
-      "text": "Тестовый пост"
+      "message_id": 200,
+      "date": 1756029800,
+      "chat": { "id": -1002544629054, "title": "Test", "username": "fitnesstest", "type": "channel" },
+      "text": "Тест c правильным CHANNEL_ID"
     }
   }'
 ```
 
-**Проверка версии:**
+#### 5.4. Проверка сохранения постов
+```bash
+curl -s https://<твой-домен>/api/posts | jq .
 ```
-https://<ТВОЙ-ДОМЕН>/api/version
-```
+После webhook теста должен показать новый элемент.
 
-**Проверка ENV:**
-```
-https://<ТВОЙ-ДОМЕН>/api/check-env
-```
-
-**Проверка постов:**
-```
-https://<ТВОЙ-ДОМЕН>/api/posts
+#### 5.5. Проверка версии
+```bash
+curl -s https://<твой-домен>/api/version | jq .
 ```
 
 ## Локальная разработка

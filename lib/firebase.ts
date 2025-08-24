@@ -1,14 +1,26 @@
 // lib/firebase.ts
 import * as admin from "firebase-admin";
 
+function getDbUrl() {
+  // поддерживаем оба названия переменных
+  const url = process.env.FIREBASE_DB_URL || process.env.FIREBASE_DATABASE_URL;
+  if (!url) throw new Error("FIREBASE_DB_URL / FIREBASE_DATABASE_URL is not set");
+  return url;
+}
+
 if (!admin.apps.length) {
+  const privateKeyRaw = process.env.FIREBASE_PRIVATE_KEY || "";
+  const privateKey = privateKeyRaw.includes("\\n")
+    ? privateKeyRaw.replace(/\\n/g, "\n")
+    : privateKeyRaw;
+
   admin.initializeApp({
     credential: admin.credential.cert({
       projectId: process.env.FIREBASE_PROJECT_ID,
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: (process.env.FIREBASE_PRIVATE_KEY || "").replace(/\\n/g, "\n"),
+      privateKey,
     } as admin.ServiceAccount),
-    databaseURL: process.env.FIREBASE_DATABASE_URL || `https://${process.env.FIREBASE_PROJECT_ID}-default-rtdb.europe-west1.firebasedatabase.app`,
+    databaseURL: getDbUrl(),
   });
 }
 

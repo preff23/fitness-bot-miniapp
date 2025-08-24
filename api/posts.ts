@@ -12,7 +12,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     list.sort((a, b) => b.date - a.date);
     res.status(200).json({ ok: true, items: list });
   } catch (e: any) {
-    console.error("[posts error]", e);
     res.status(200).json({ ok: false, error: e.message || "unknown" });
   }
 }
