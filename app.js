@@ -236,7 +236,7 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
   }
 
   function wireMenu() {
-    document.querySelectorAll('.menu-card').forEach((btn) => {
+    document.querySelectorAll('.tile-small').forEach((btn) => {
       btn.addEventListener('click', () => {
         const action = btn.getAttribute('data-action');
         const submenu = btn.getAttribute('data-submenu');
@@ -247,6 +247,18 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
           showBottomSheet(submenu);
         } else {
           routeAction(action);
+        }
+      });
+    });
+
+    // Wire action bar buttons
+    document.querySelectorAll('.btn-ghost').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        hapticImpact('light');
+        
+        if (action === 'news') {
+          showNews();
         }
       });
     });
