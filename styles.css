@@ -214,8 +214,8 @@ body {
 }
 
 .avatar {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   border: 3px solid #FF6A00;
   overflow: hidden;
@@ -255,6 +255,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: left;
 }
 
 .brand-slogan {
@@ -263,7 +264,7 @@ body {
   color: #FF7A00;
   font-weight: 400;
   font-style: italic;
-  text-align: center;
+  text-align: left;
   opacity: 0.9;
   line-height: 1.2;
 }
