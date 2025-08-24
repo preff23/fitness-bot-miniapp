@@ -84,15 +84,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               }
             }
             
-            // Сортируем по дате и берем самый свежий
+            // Сортируем по дате и берем топ-3
             if (posts.length > 0) {
               posts.sort((a, b) => b.date - a.date);
-              const latestPost = posts[0];
+              const latestPosts = posts.slice(0, 3); // Берем последние 3 поста
               
               return res.status(200).json({
                 ok: true,
-                items: [latestPost],
-                total: 1,
+                items: latestPosts,
+                total: latestPosts.length,
                 channel: CHANNEL_USERNAME,
                 source: "web_scraping",
                 channel_info: {
@@ -102,7 +102,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 },
                 debug: {
                   total_posts_found: posts.length,
-                  latest_date: new Date(latestPost.date * 1000).toISOString()
+                  showing_posts: latestPosts.length,
+                  latest_date: new Date(latestPosts[0].date * 1000).toISOString(),
+                  oldest_shown: new Date(latestPosts[latestPosts.length - 1].date * 1000).toISOString()
                 }
               });
             }

@@ -77,20 +77,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           }
         }
         
-        // Сортируем по дате (самые новые сначала) и берем первый
+        // Сортируем по дате (самые новые сначала) и берем топ-3
         if (posts.length > 0) {
           posts.sort((a, b) => b.date - a.date);
-          const latestPost = posts[0];
+          const latestPosts = posts.slice(0, 3); // Берем последние 3 поста
           
           return res.status(200).json({
             ok: true,
-            items: [latestPost],
-            total: 1,
+            items: latestPosts,
+            total: latestPosts.length,
             channel: CHANNEL_USERNAME,
             source: "web_scraping",
             debug: {
               total_posts_found: posts.length,
-              latest_date: new Date(latestPost.date * 1000).toISOString()
+              showing_posts: latestPosts.length,
+              latest_date: new Date(latestPosts[0].date * 1000).toISOString(),
+              oldest_shown: new Date(latestPosts[latestPosts.length - 1].date * 1000).toISOString()
             }
           });
         }
@@ -99,20 +101,41 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       console.error("[posts] Web scraping error:", webError);
     }
 
-    // Если не удалось получить реальные посты, возвращаем fallback сообщение
-    const fallbackPost = {
-      id: "fallback_1",
-      date: Math.floor(Date.now() / 1000) - 600, // 10 минут назад
-      text: `📢 Последние новости из канала ${CHANNEL_USERNAME}\n\n💡 Для просмотра актуальных постов откройте канал напрямую.\n\n🔗 Канал доступен, но для автоматического получения постов боту нужны права администратора.`,
-      has_media: false,
-      photos: [],
-      entities: []
-    };
+    // Если не удалось получить реальные посты, возвращаем fallback с 3 примерами
+    const fallbackPosts = [
+      {
+        id: "fallback_1",
+        date: Math.floor(Date.now() / 1000) - 600, // 10 минут назад
+        text: `📢 Последние новости из канала ${CHANNEL_USERNAME}\n\n💡 Для просмотра актуальных постов откройте канал напрямую.\n\n🔗 Канал доступен, но для автоматического получения постов боту нужны права администратора.`,
+        has_media: false,
+        photos: [],
+        entities: [],
+        post_url: `https://t.me/${CHANNEL_USERNAME.replace('@', '')}`
+      },
+      {
+        id: "fallback_2", 
+        date: Math.floor(Date.now() / 1000) - 3600, // 1 час назад
+        text: `🏃‍♂️ Подпишитесь на канал ${CHANNEL_USERNAME}\n\nЗдесь публикуются мотивационные посты, советы по тренировкам и правильному питанию от персонального тренера.`,
+        has_media: false,
+        photos: [],
+        entities: [],
+        post_url: `https://t.me/${CHANNEL_USERNAME.replace('@', '')}`
+      },
+      {
+        id: "fallback_3",
+        date: Math.floor(Date.now() / 1000) - 7200, // 2 часа назад  
+        text: `💪 Канал с полезными советами\n\nЗдесь вы найдете эффективные упражнения, рецепты здорового питания и мотивацию для достижения ваших фитнес-целей!`,
+        has_media: false,
+        photos: [],
+        entities: [],
+        post_url: `https://t.me/${CHANNEL_USERNAME.replace('@', '')}`
+      }
+    ];
 
     res.status(200).json({
       ok: true,
-      items: [fallbackPost],
-      total: 1,
+      items: fallbackPosts,
+      total: fallbackPosts.length,
       channel: CHANNEL_USERNAME,
       source: "fallback",
       message: "Bot needs admin rights in channel to fetch real posts"
