@@ -31,6 +31,10 @@
             "api/debug-webhook.js": {
               "runtime": "@vercel/node@3.0.0",
               "maxDuration": 10
+            },
+            "api/check-posts.js": {
+              "runtime": "@vercel/node@3.0.0",
+              "maxDuration": 10
             }
     },
   "headers": [
