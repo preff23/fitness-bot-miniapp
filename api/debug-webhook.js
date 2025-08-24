@@ -6,7 +6,7 @@ module.exports = async function handler(req, res) {
       hasMessage: !!(req.body && req.body.message),
       hasChannelPost: !!(req.body && req.body.channel_post),
       hasEditedChannelPost: !!(req.body && req.body.edited_channel_post),
-      updateId: req.body && req.body.update_id,
+      updateId: req.body && req.body.update_id ? req.body.update_id : 'no update_id',
       timestamp: new Date().toISOString()
     });
     
@@ -14,7 +14,7 @@ module.exports = async function handler(req, res) {
     const updateInfo = {
       timestamp: new Date().toISOString(),
       method: req.method,
-      updateId: req.body.update_id,
+      updateId: req.body && req.body.update_id ? req.body.update_id : 'no update_id',
       updateType: (req.body && req.body.message) ? 'message' : 
                   (req.body && req.body.channel_post) ? 'channel_post' : 
                   (req.body && req.body.edited_channel_post) ? 'edited_channel_post' : 'unknown',
