@@ -22,7 +22,7 @@ const getMenuKeyboard = () => ({
 bot.start(async (ctx) => {
   try {
     const message = await ctx.reply(
-      '🏃‍♂️ Привет! Я Коновалов Денис — персональный тренер.\n\n💪 Готов помочь тебе достичь твоих фитнес-целей!\n\n🔥 Любой путь начинается с первого шага!\n\nНажми кнопку ниже, чтобы открыть меню:',
+      'Привет!\nМеня зовут Денис,\nЯ - твой личный гид в мире спорта\n\nПогнали тренироваться вместе 💪\n\nЖми на кнопку 👇',
       {
         reply_markup: getMenuKeyboard(),
       }
@@ -75,21 +75,23 @@ bot.on('text', async (ctx, next) => {
 // Простое логирование постов канала (без сохранения)
 bot.on("channel_post", (ctx) => {
   const m = ctx.channelPost;
+  const text = ('text' in m ? m.text : 'caption' in m ? m.caption : "") || "";
   console.log("[channel_post]", {
     chat_id: m?.chat?.id,
     username: m?.chat?.username,
     message_id: m?.message_id,
-    text: (m?.text || m?.caption || "").slice(0, 100)
+    text: text.slice(0, 100)
   });
 });
 
 bot.on("edited_channel_post", (ctx) => {
   const m = ctx.editedChannelPost;
+  const text = ('text' in m ? m.text : 'caption' in m ? m.caption : "") || "";
   console.log("[edited_channel_post]", {
     chat_id: m?.chat?.id, 
     username: m?.chat?.username,
     message_id: m?.message_id,
-    text: (m?.text || m?.caption || "").slice(0, 100)
+    text: text.slice(0, 100)
   });
 });
 
