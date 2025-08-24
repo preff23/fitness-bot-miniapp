@@ -144,12 +144,13 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
             <div class="news-header">
               <div class="left">
                 <button class="back-button" onclick="location.reload()">
-                  <span class="icon energy" aria-hidden="true"></span>
-                  НАЗАД
+                  <img src="/photo/arrow.png" alt="Назад" width="24" height="24" />
                 </button>
                 <h2>НОВОСТИ</h2>
               </div>
-              <button class="refresh-button" onclick="showNews()">🔄</button>
+              <button class="refresh-button" onclick="showNews()">
+                <img src="/photo/refresh.png" alt="Обновить" width="24" height="24" />
+              </button>
             </div>
             <div class="news-list">
               ${data.items.map(post => `
@@ -171,12 +172,13 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
             <div class="news-header">
               <div class="left">
                 <button class="back-button" onclick="location.reload()">
-                  <span class="icon energy" aria-hidden="true"></span>
-                  НАЗАД
+                  <img src="/photo/arrow.png" alt="Назад" width="24" height="24" />
                 </button>
                 <h2>НОВОСТИ</h2>
               </div>
-              <button class="refresh-button" onclick="showNews()">🔄</button>
+              <button class="refresh-button" onclick="showNews()">
+                <img src="/photo/refresh.png" alt="Обновить" width="24" height="24" />
+              </button>
             </div>
             <div class="news-empty">
               <p>Пока нет новостей</p>
@@ -192,12 +194,13 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
           <div class="news-header">
             <div class="left">
               <button class="back-button" onclick="location.reload()">
-                <span class="icon energy" aria-hidden="true"></span>
-                НАЗАД
+                <img src="/photo/arrow.png" alt="Назад" width="24" height="24" />
               </button>
               <h2>НОВОСТИ</h2>
             </div>
-            <button class="refresh-button" onclick="showNews()">🔄</button>
+            <button class="refresh-button" onclick="showNews()">
+              <img src="/photo/refresh.png" alt="Обновить" width="24" height="24" />
+            </button>
           </div>
           <div class="news-error">
             <p>Ошибка загрузки новостей</p>

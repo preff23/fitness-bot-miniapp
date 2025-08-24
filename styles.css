@@ -659,6 +659,18 @@ body {
   transform: scale(0.95);
 }
 
+/* Icon styles for buttons */
+.back-button img,
+.refresh-button img {
+  filter: brightness(1) saturate(1);
+  transition: 0.2s ease;
+}
+
+.back-button:hover img,
+.refresh-button:hover img {
+  filter: drop-shadow(0 0 6px #ff6600);
+}
+
 .news-list {
   display: flex;
   flex-direction: column;
