@@ -15,6 +15,10 @@
     "api/check-env.ts": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
+    },
+    "api/test-firebase.ts": {
+      "runtime": "@vercel/node@3.0.0",
+      "maxDuration": 10
     }
   },
   "headers": [
