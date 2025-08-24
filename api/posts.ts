@@ -38,12 +38,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         while ((match = messagePattern.exec(html)) !== null) {
           const messageHtml = match[1];
           
+          // Ищем ID поста из data-post атрибута
+          const postIdMatch = match[0].match(/data-post="([^"]+)"/);
           // Ищем текст поста
           const textMatch = messageHtml.match(/<div class="tgme_widget_message_text[^>]*>(.*?)<\/div>/s);
           // Ищем дату
           const dateMatch = messageHtml.match(/<time[^>]*datetime="([^"]*)"[^>]*>/);
           
-          if (textMatch && textMatch[1] && dateMatch && dateMatch[1]) {
+          if (textMatch && textMatch[1] && dateMatch && dateMatch[1] && postIdMatch && postIdMatch[1]) {
             // Очищаем HTML теги и энтити
             const cleanText = textMatch[1]
               .replace(/<[^>]*>/g, '')
@@ -58,13 +60,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             
             if (cleanText.length > 0) {
               const postDate = new Date(dateMatch[1]).getTime() / 1000;
+              const postId = postIdMatch[1]; // формат: "Konovalsportlive/123"
+              const messageId = postId.split('/')[1]; // извлекаем номер сообщения
+              
               posts.push({
-                id: `post_${posts.length}`,
+                id: messageId || `post_${posts.length}`,
                 date: postDate,
                 text: cleanText,
                 has_media: false,
                 photos: [],
-                entities: []
+                entities: [],
+                post_url: `https://t.me/${CHANNEL_USERNAME.replace('@', '')}/${messageId}`, // прямая ссылка на пост
+                post_id: postId
               });
             }
           }

@@ -156,7 +156,7 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
                 <article class="news-card">
                   <div class="news-date">${new Date(post.date * 1000).toLocaleString('ru-RU')}</div>
                   ${post.text ? `<div class="news-text">${post.text}</div>` : ''}
-                  <a class="news-open" href="https://t.me/afterlyf3/${post.id}" target="_blank">
+                  <a class="news-open" href="${post.post_url || `https://t.me/Konovalsportlive/${post.id}`}" target="_blank">
                     ОТКРЫТЬ В КАНАЛЕ →
                   </a>
                 </article>
