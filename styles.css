@@ -252,10 +252,7 @@ body {
   text-overflow: ellipsis;
 }
 
-.top-actions {
-  display: flex;
-  gap: 12px;
-}
+
 
 .icon-btn {
   appearance: none;
@@ -279,31 +276,7 @@ body {
   box-shadow: 0 6px 16px rgba(255, 106, 0, 0.3);
 }
 
-.telegram-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 106, 0, 0.1);
-  border: 1px solid rgba(255, 106, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
 
-.telegram-icon:hover,
-.telegram-icon:focus-visible {
-  background: var(--gradient-active);
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(255, 106, 0, 0.3);
-}
-
-.telegram-icon img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
 
 /* Main Content */
 .main-content {
@@ -364,15 +337,13 @@ body {
 }
 
 .tile-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
   color: #fff;
-  font-weight: 800;
-  font-size: 15.5px;
-  line-height: 1.22;
-  font-family: var(--font-montserrat);
-  letter-spacing: 0.5px;
-  word-break: keep-all;
-  hyphens: manual;
-  overflow-wrap: anywhere;
+  white-space: normal;
+  word-break: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
