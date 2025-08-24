@@ -42,13 +42,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             const dateMatch = html.match(/<time[^>]*datetime="([^"]*)"[^>]*>/);
             
             if (postMatch && postMatch[1]) {
-              // Очищаем HTML теги
+              // Очищаем HTML теги и энтити
               const cleanText = postMatch[1]
                 .replace(/<[^>]*>/g, '') // убираем HTML теги
                 .replace(/&quot;/g, '"')
                 .replace(/&amp;/g, '&')
                 .replace(/&lt;/g, '<')
                 .replace(/&gt;/g, '>')
+                .replace(/&#33;/g, '!')
+                .replace(/&#39;/g, "'")
+                .replace(/&#(\d+);/g, (match, num) => String.fromCharCode(parseInt(num))) // все числовые энтити
                 .trim();
               
               const postDate = dateMatch ? new Date(dateMatch[1]).getTime() / 1000 : Math.floor(Date.now() / 1000);

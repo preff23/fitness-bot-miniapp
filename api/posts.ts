@@ -17,63 +17,58 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
-    // Получаем информацию о канале
-    const chatUrl = `https://api.telegram.org/bot${BOT_TOKEN}/getChat?chat_id=${encodeURIComponent(CHANNEL_USERNAME)}`;
-    const chatResponse = await fetch(chatUrl);
-    const chatData = await chatResponse.json();
+    // Пробуем веб-скрапинг как основной метод
+    const channelWebUrl = `https://t.me/s/${CHANNEL_USERNAME.replace('@', '')}`;
     
-    if (!chatData.ok) {
-      console.error("[posts] Failed to get channel info:", chatData.description);
-      return res.status(200).json({
-        ok: false,
-        error: `Cannot access channel ${CHANNEL_USERNAME}: ${chatData.description}`,
-        items: [],
-        total: 0
-      });
-    }
-
-    const channelInfo = chatData.result;
-    
-    // Пытаемся получить последние сообщения через getUpdates
-    // Примечание: это может не работать для публичных каналов без админских прав
     try {
-      const updatesUrl = `https://api.telegram.org/bot${BOT_TOKEN}/getUpdates?allowed_updates=["channel_post"]&limit=100`;
-      const updatesResponse = await fetch(updatesUrl);
-      const updatesData = await updatesResponse.json();
+      const webResponse = await fetch(channelWebUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+      });
       
-      if (updatesData.ok && updatesData.result.length > 0) {
-        // Фильтруем посты из нужного канала
-        const channelPosts = updatesData.result
-          .filter((update: any) => {
-            const post = update.channel_post;
-            if (!post) return false;
-            return post.chat.id === channelInfo.id;
-          })
-          .map((update: any) => {
-            const post = update.channel_post;
-            return {
-              id: String(post.message_id),
-              date: post.date,
-              text: post.text || post.caption || "",
-              has_media: Boolean(post.photo || post.video || post.document),
-              photos: (post.photo || []).map((p: any) => p.file_id),
-              entities: post.entities || post.caption_entities || []
-            };
-          })
-          .sort((a: any, b: any) => b.date - a.date); // Сортируем по дате (новые сначала)
-
-        if (channelPosts.length > 0) {
-          return res.status(200).json({
-            ok: true,
-            items: channelPosts.slice(0, 5), // Возвращаем топ-5 постов
-            total: channelPosts.length,
-            channel: CHANNEL_USERNAME,
-            source: "telegram_api"
-          });
+      if (webResponse.ok) {
+        const html = await webResponse.text();
+        
+        // Простой парсинг последнего поста
+        const postMatch = html.match(/<div class="tgme_widget_message_text[^>]*>(.*?)<\/div>/s);
+        const dateMatch = html.match(/<time[^>]*datetime="([^"]*)"[^>]*>/);
+        
+        if (postMatch && postMatch[1]) {
+          // Очищаем HTML теги и энтити
+          const cleanText = postMatch[1]
+            .replace(/<[^>]*>/g, '')
+            .replace(/&quot;/g, '"')
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&#33;/g, '!')
+            .replace(/&#39;/g, "'")
+            .replace(/&#(\d+);/g, (match, num) => String.fromCharCode(parseInt(num)))
+            .trim();
+          
+          const postDate = dateMatch ? new Date(dateMatch[1]).getTime() / 1000 : Math.floor(Date.now() / 1000);
+          
+          if (cleanText.length > 0) {
+            return res.status(200).json({
+              ok: true,
+              items: [{
+                id: "latest_web_post",
+                date: postDate,
+                text: cleanText,
+                has_media: false,
+                photos: [],
+                entities: []
+              }],
+              total: 1,
+              channel: CHANNEL_USERNAME,
+              source: "web_scraping"
+            });
+          }
         }
       }
-    } catch (apiError) {
-      console.error("[posts] Telegram API error:", apiError);
+    } catch (webError) {
+      console.error("[posts] Web scraping error:", webError);
     }
 
     // Если не удалось получить реальные посты, возвращаем fallback сообщение
