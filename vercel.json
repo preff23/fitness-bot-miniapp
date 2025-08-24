@@ -1,43 +1,32 @@
 {
   "functions": {
-    "api/telegram.js": {
+    "api/telegram.ts": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
     },
-    "api/health.js": {
+    "api/posts.ts": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
     },
-    "api/posts.js": {
+    "api/version.ts": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
     },
-    "api/test-firebase.js": {
+    "api/check-env.ts": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
-    },
-    "api/debug-env.js": {
-      "runtime": "@vercel/node@3.0.0",
-      "maxDuration": 10
-    },
-    "api/simple-firebase-test.js": {
-      "runtime": "@vercel/node@3.0.0",
-      "maxDuration": 10
-    },
-                            "api/debug-key.js": {
-              "runtime": "@vercel/node@3.0.0",
-              "maxDuration": 10
-            },
-            "api/debug-webhook.js": {
-              "runtime": "@vercel/node@3.0.0",
-              "maxDuration": 10
-            },
-            "api/check-posts.js": {
-              "runtime": "@vercel/node@3.0.0",
-              "maxDuration": 10
-            }
-    },
+    }
+  },
   "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [
@@ -52,12 +41,7 @@
         {
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
+        },
         {
           "key": "Referrer-Policy",
           "value": "origin-when-cross-origin"

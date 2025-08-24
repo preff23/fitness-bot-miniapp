@@ -43,17 +43,72 @@ npm start
 В Project Settings → Environment Variables добавьте:
 - `BOT_TOKEN` = 7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA
 - `WEBAPP_URL` = https://fitness-bot-miniapp-ged8.vercel.app/
-- `TG_WEBHOOK_SECRET` = любой рандомный секрет (например, UUID)
+- `CHANNEL_USERNAME` = @fitnesstest
+- `CHANNEL_ID` = числовой ID канала (опционально, если не указан - используется CHANNEL_USERNAME)
+- `FIREBASE_PROJECT_ID` = ваш_project_id
+- `FIREBASE_CLIENT_EMAIL` = ваш_client_email
+- `FIREBASE_PRIVATE_KEY` = ваш_private_key
+- `FIREBASE_DATABASE_URL` = https://fitness-bot-miniapp-default-rtdb.europe-west1.firebasedatabase.app
 
 ### 2. Настройка вебхука
-После деплоя выполните в браузере:
+После деплоя выполните команду для установки webhook с поддержкой channel_post и edited_channel_post:
+
+**Через браузер:**
 ```
-https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/setWebhook?url=https://fitness-bot-miniapp-ged8.vercel.app/api/telegram&secret_token=YOUR_SECRET
+https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=https://<ТВОЙ-ДОМЕН>/api/telegram&allowed_updates=%5B%22message%22,%22channel_post%22,%22edited_channel_post%22%5D
+```
+
+**Через cURL:**
+```bash
+curl -X POST "https://api.telegram.org/bot<BOT_TOKEN>/setWebhook" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://<ТВОЙ-ДОМЕН>/api/telegram",
+    "allowed_updates": ["message", "channel_post", "edited_channel_post"]
+  }'
 ```
 
 ### 3. Проверка вебхука
 ```
-https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/getWebhookInfo
+https://api.telegram.org/bot<BOT_TOKEN>/getWebhookInfo
+```
+
+### 4. Получение CHANNEL_ID
+Есть несколько способов получить CHANNEL_ID:
+
+1. **Через пересылку**: Переслать пост из канала боту → в апдейте будет `forward_from_chat.id`
+2. **Через API**: `https://api.telegram.org/bot<BOT_TOKEN>/getChat?chat_id=@<channel_username>`
+3. **Через логи**: Временно логировать `m.chat.id` в `savePost` и сделать тест-пост
+
+### 5. Тестирование webhook
+**Правильный cURL-тест:**
+```bash
+curl -X POST "https://<ТВОЙ-ДОМЕН>/api/telegram" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "update_id": 999999,
+    "channel_post": {
+      "message_id": 100,
+      "date": 1755960000,
+      "chat": { "id": -1001234567890, "title": "Test", "username": "fitnesstest", "type": "channel" },
+      "text": "Тестовый пост"
+    }
+  }'
+```
+
+**Проверка версии:**
+```
+https://<ТВОЙ-ДОМЕН>/api/version
+```
+
+**Проверка ENV:**
+```
+https://<ТВОЙ-ДОМЕН>/api/check-env
+```
+
+**Проверка постов:**
+```
+https://<ТВОЙ-ДОМЕН>/api/posts
 ```
 
 ## Локальная разработка
