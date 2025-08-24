@@ -133,7 +133,7 @@ import { ADMIN_USERNAME, BRAND, dm } from './config.js';
         </div>
       `;
       
-      // Загружаем новости с кэш-бастером
+      // Загружаем новости с кэш-бастером (обновлено)
       const response = await fetch('/api/posts?limit=20&t=' + Date.now());
       const data = await response.json();
       
