@@ -41,61 +41,77 @@
 
     <!-- Main Content -->
     <main class="main-content">
-      <section class="menu-grid" aria-label="Главное меню">
+      <section class="grid-home" aria-label="Главное меню">
         <!-- 1. Бесплатная консультация -->
-        <button class="menu-card primary" data-action="free_consult">
-          <span class="icon cons" aria-hidden="true"></span>
-          <span class="card-label">БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ</span>
+        <button class="tile-small" data-action="free_consult">
+          <div class="tile-icon-box">
+            <img src="./photo/cons.png" alt="Консультация" width="24" height="24" />
+          </div>
+          <span class="tile-title">БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ</span>
         </button>
 
         <!-- 2. Тренировка в зале -->
-        <button class="menu-card primary" data-action="gym_training" data-submenu="gym">
-          <span class="icon gym" aria-hidden="true"></span>
-          <span class="card-label">ТРЕНИРОВКА В ЗАЛЕ</span>
+        <button class="tile-small" data-action="gym_training" data-submenu="gym">
+          <div class="tile-icon-box">
+            <img src="./photo/gym.png" alt="Зал" width="24" height="24" />
+          </div>
+          <span class="tile-title">ТРЕНИРОВКА В ЗАЛЕ</span>
         </button>
 
         <!-- 3. Тренировка улица -->
-        <button class="menu-card primary" data-action="outdoor_training" data-submenu="outdoor">
-          <span class="icon runner" aria-hidden="true"></span>
-          <span class="card-label">ТРЕНИРОВКА УЛИЦА</span>
+        <button class="tile-small" data-action="outdoor_training" data-submenu="outdoor">
+          <div class="tile-icon-box">
+            <img src="./photo/runner.png" alt="Улица" width="24" height="24" />
+          </div>
+          <span class="tile-title">ТРЕНИРОВКА УЛИЦА</span>
         </button>
 
         <!-- 4. Запись на марафон -->
-        <button class="menu-card primary" data-action="marathon_signup">
-          <span class="icon plan" aria-hidden="true"></span>
-          <span class="card-label">ЗАПИСЬ НА МАРАФОН</span>
+        <button class="tile-small" data-action="marathon_signup">
+          <div class="tile-icon-box">
+            <img src="./photo/plan.png" alt="Марафон" width="24" height="24" />
+          </div>
+          <span class="tile-title">ЗАПИСЬ НА МАРАФОН</span>
         </button>
 
         <!-- 5. Тренировки дома -->
-        <button class="menu-card primary" data-action="home_workouts" data-submenu="home">
-          <span class="icon yoga" aria-hidden="true"></span>
-          <span class="card-label">ТРЕНИРОВКИ ДОМА</span>
+        <button class="tile-small" data-action="home_workouts" data-submenu="home">
+          <div class="tile-icon-box">
+            <img src="./photo/yoga.png" alt="Дом" width="24" height="24" />
+          </div>
+          <span class="tile-title">ТРЕНИРОВКИ ДОМА</span>
         </button>
 
         <!-- 6. Смешанные тренировки -->
-        <button class="menu-card primary" data-action="combo_training" data-submenu="combo">
-          <span class="icon energy" aria-hidden="true"></span>
-          <span class="card-label">СМЕШАННЫЕ ТРЕНИРОВКИ</span>
+        <button class="tile-small" data-action="combo_training" data-submenu="combo">
+          <div class="tile-icon-box">
+            <img src="./photo/energy.png" alt="Смешанные" width="24" height="24" />
+          </div>
+          <span class="tile-title">СМЕШАННЫЕ ТРЕНИРОВКИ</span>
         </button>
 
         <!-- 7. Индивидуальный план питания -->
-        <button class="menu-card primary" data-action="nutrition_plan">
-          <span class="icon diet" aria-hidden="true"></span>
-          <span class="card-label">ИНДИВИДУАЛЬНЫЙ ПЛАН ПИТАНИЯ</span>
+        <button class="tile-small" data-action="nutrition_plan">
+          <div class="tile-icon-box">
+            <img src="./photo/diet.png" alt="Питание" width="24" height="24" />
+          </div>
+          <span class="tile-title">ИНДИВИДУАЛЬНЫЙ ПЛАН ПИТАНИЯ</span>
         </button>
 
         <!-- 8. Задать свой вопрос -->
-        <button class="menu-card primary" data-action="ask_question">
-          <span class="icon question" aria-hidden="true"></span>
-          <span class="card-label">ЗАДАТЬ СВОЙ ВОПРОС</span>
-        </button>
-
-        <!-- 9. Новости -->
-        <button class="menu-card primary" data-action="news">
-          <span class="icon news" aria-hidden="true">📰</span>
-          <span class="card-label">НОВОСТИ</span>
+        <button class="tile-small" data-action="ask_question">
+          <div class="tile-icon-box">
+            <img src="./photo/question.png" alt="Вопрос" width="24" height="24" />
+          </div>
+          <span class="tile-title">ЗАДАТЬ СВОЙ ВОПРОС</span>
         </button>
       </section>
+
+      <!-- Action Bar -->
+      <div class="action-bar">
+        <button class="btn-ghost" data-action="news">НОВОСТИ</button>
+        <button class="btn-ghost" onclick="window.open('https://t.me/Konovalsportlive', '_blank')">ПЕРЕЙТИ В КАНАЛ</button>
+      </div>
     </main>
 
     <!-- Bottom Sheet Overlay -->
