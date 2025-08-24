@@ -27,6 +27,10 @@
     "api/latest-post.ts": {
       "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
+    },
+    "api/channel-post.ts": {
+      "runtime": "@vercel/node@3.0.0",
+      "maxDuration": 15
     }
   },
   "headers": [
