@@ -30,41 +30,62 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (webResponse.ok) {
         const html = await webResponse.text();
         
-        // Простой парсинг последнего поста
-        const postMatch = html.match(/<div class="tgme_widget_message_text[^>]*>(.*?)<\/div>/s);
-        const dateMatch = html.match(/<time[^>]*datetime="([^"]*)"[^>]*>/);
+        // Ищем все посты на странице и выбираем самый свежий
+        const messagePattern = /<div class="tgme_widget_message[^>]*data-post="[^"]*"[^>]*>(.*?)<\/div>\s*<\/div>\s*<\/div>/gs;
+        const posts = [];
+        let match;
         
-        if (postMatch && postMatch[1]) {
-          // Очищаем HTML теги и энтити
-          const cleanText = postMatch[1]
-            .replace(/<[^>]*>/g, '')
-            .replace(/&quot;/g, '"')
-            .replace(/&amp;/g, '&')
-            .replace(/&lt;/g, '<')
-            .replace(/&gt;/g, '>')
-            .replace(/&#33;/g, '!')
-            .replace(/&#39;/g, "'")
-            .replace(/&#(\d+);/g, (match, num) => String.fromCharCode(parseInt(num)))
-            .trim();
+        while ((match = messagePattern.exec(html)) !== null) {
+          const messageHtml = match[1];
           
-          const postDate = dateMatch ? new Date(dateMatch[1]).getTime() / 1000 : Math.floor(Date.now() / 1000);
+          // Ищем текст поста
+          const textMatch = messageHtml.match(/<div class="tgme_widget_message_text[^>]*>(.*?)<\/div>/s);
+          // Ищем дату
+          const dateMatch = messageHtml.match(/<time[^>]*datetime="([^"]*)"[^>]*>/);
           
-          if (cleanText.length > 0) {
-            return res.status(200).json({
-              ok: true,
-              items: [{
-                id: "latest_web_post",
+          if (textMatch && textMatch[1] && dateMatch && dateMatch[1]) {
+            // Очищаем HTML теги и энтити
+            const cleanText = textMatch[1]
+              .replace(/<[^>]*>/g, '')
+              .replace(/&quot;/g, '"')
+              .replace(/&amp;/g, '&')
+              .replace(/&lt;/g, '<')
+              .replace(/&gt;/g, '>')
+              .replace(/&#33;/g, '!')
+              .replace(/&#39;/g, "'")
+              .replace(/&#(\d+);/g, (match, num) => String.fromCharCode(parseInt(num)))
+              .trim();
+            
+            if (cleanText.length > 0) {
+              const postDate = new Date(dateMatch[1]).getTime() / 1000;
+              posts.push({
+                id: `post_${posts.length}`,
                 date: postDate,
                 text: cleanText,
                 has_media: false,
                 photos: [],
                 entities: []
-              }],
-              total: 1,
-              channel: CHANNEL_USERNAME,
-              source: "web_scraping"
-            });
+              });
+            }
           }
+        }
+        
+        // Сортируем по дате (самые новые сначала) и берем первый
+        if (posts.length > 0) {
+          posts.sort((a, b) => b.date - a.date);
+          const latestPost = posts[0];
+          
+          return res.status(200).json({
+            ok: true,
+            items: [latestPost],
+            total: 1,
+            channel: CHANNEL_USERNAME,
+            source: "web_scraping",
+            debug: {
+              total_posts_found: posts.length,
+              latest_date: new Date(latestPost.date * 1000).toISOString()
+            }
+          });
         }
       }
     } catch (webError) {
