@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Telegraf } = require('telegraf');
 
-const BOT_TOKEN = process.env.BOT_TOKEN || '7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA';
+const BOT_TOKEN = process.env.BOT_TOKEN || '8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c';
 const WEBAPP_URL = process.env.WEBAPP_URL || 'https://fitness-bot-miniapp-ged8.vercel.app/';
 
 console.log('🔧 Тестирование бота...');

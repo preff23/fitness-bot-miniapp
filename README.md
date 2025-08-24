@@ -41,7 +41,7 @@ npm start
 
 ### 1. Переменные окружения в Vercel
 В Project Settings → Environment Variables добавьте:
-- `BOT_TOKEN` = 7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA
+- `BOT_TOKEN` = 8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c
 - `WEBAPP_URL` = https://fitness-bot-miniapp-ged8.vercel.app/
 - `CHANNEL_USERNAME` = @fitnesstest
 - `CHANNEL_ID` = числовой ID канала (опционально, если не указан - используется CHANNEL_USERNAME)

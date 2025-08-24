@@ -14,7 +14,7 @@
 
 | Name | Value |
 |------|-------|
-| `BOT_TOKEN` | `7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA` |
+| `BOT_TOKEN` | `8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c` |
 | `WEBAPP_URL` | `https://fitness-bot-miniapp-ged8.vercel.app/` |
 | `TG_WEBHOOK_SECRET` | `fitness-bot-secret-2024` |
 
@@ -41,7 +41,7 @@ node setup-webhook.js
 
 ### Проверка вебхука
 ```bash
-curl -s "https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/getWebhookInfo"
+curl -s "https://api.telegram.org/bot8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c/getWebhookInfo"
 ```
 
 ### Проверка health endpoint
@@ -51,7 +51,7 @@ curl -s https://fitness-bot-miniapp-ged8.vercel.app/api/health
 
 ### Проверка статуса бота
 ```bash
-curl -s "https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/getMe"
+curl -s "https://api.telegram.org/bot8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c/getMe"
 ```
 
 ## ✅ Ожидаемый результат

@@ -41,7 +41,7 @@ node test-bot.js
 
 ### Проверка вебхука:
 ```bash
-curl -s "https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/getWebhookInfo"
+curl -s "https://api.telegram.org/bot8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c/getWebhookInfo"
 ```
 
 ### Проверка Vercel:

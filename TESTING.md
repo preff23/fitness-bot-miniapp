@@ -21,19 +21,19 @@ node test-bot.js
 
 ### 1. Настройка переменных окружения в Vercel
 В Project Settings → Environment Variables добавьте:
-- `BOT_TOKEN` = 7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA
+- `BOT_TOKEN` = 8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c
 - `WEBAPP_URL` = https://fitness-bot-miniapp-ged8.vercel.app/
 - `TG_WEBHOOK_SECRET` = любой рандомный секрет (например, UUID)
 
 ### 2. Настройка вебхука
 После деплоя выполните в браузере:
 ```
-https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/setWebhook?url=https://fitness-bot-miniapp-ged8.vercel.app/api/telegram&secret_token=YOUR_SECRET
+https://api.telegram.org/bot8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c/setWebhook?url=https://fitness-bot-miniapp-ged8.vercel.app/api/telegram&secret_token=YOUR_SECRET
 ```
 
 ### 3. Проверка вебхука
 ```
-https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/getWebhookInfo
+https://api.telegram.org/bot8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c/getWebhookInfo
 ```
 
 ### 4. Проверка health endpoint
@@ -45,12 +45,12 @@ https://fitness-bot-miniapp-ged8.vercel.app/api/health
 
 ### Проверка статуса бота
 ```bash
-curl -s "https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/getMe"
+curl -s "https://api.telegram.org/bot8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c/getMe"
 ```
 
 ### Проверка вебхука
 ```bash
-curl -s "https://api.telegram.org/bot7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA/getWebhookInfo"
+curl -s "https://api.telegram.org/bot8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c/getWebhookInfo"
 ```
 
 ### Проверка Mini App

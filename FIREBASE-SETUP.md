@@ -32,7 +32,7 @@
 В **Vercel Dashboard** → **Project Settings** → **Environment Variables** добавьте:
 
 ```
-BOT_TOKEN=7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA
+BOT_TOKEN=8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c
 WEBAPP_URL=https://fitness-bot-miniapp-ged8.vercel.app/
 CHANNEL_USERNAME=@your_channel_username
 FIREBASE_PROJECT_ID=your-project-id

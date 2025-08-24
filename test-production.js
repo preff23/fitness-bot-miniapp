@@ -1,6 +1,6 @@
 const https = require('https');
 
-const BOT_TOKEN = '7530980547:AAFxX3IUtXcz89f9gPEJ778TpCXBiG2ykbA';
+const BOT_TOKEN = '8367003356:AAGL4Nr4xAMP5GVPoxTUvyZ6cx9n8JU096c';
 
 console.log('🧪 Тестирование production бота...');
 
