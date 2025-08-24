@@ -252,6 +252,20 @@ body {
   text-overflow: ellipsis;
 }
 
+.brand-slogan {
+  margin-left: auto;
+  padding-left: 16px;
+}
+
+.brand-slogan span {
+  color: #FF7A00;
+  font-size: clamp(8px, 2vw, 10px);
+  font-weight: 400;
+  font-style: italic;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
 
 
 .icon-btn {
@@ -354,6 +368,32 @@ body {
   max-width: 95%;
   margin: 0 auto;
   text-align: center;
+}
+
+.tile-small--special {
+  border-top: 2px solid #FF6A00;
+  box-shadow: 0 0 22px rgba(255, 102, 0, 0.25) inset, 0 0 18px rgba(255, 102, 0, 0.12), 0 0 12px rgba(255, 102, 0, 0.2);
+}
+
+.tile-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.tile-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.tile-small--compact .tile-title {
+  font-size: clamp(11px, 2.8vw, 13px);
+  -webkit-line-clamp: 1;
 }
 
 /* Action Bar */
